@@ -184,7 +184,39 @@ static public float Calcular_definitiva(float n1, float n2, float n3, float n4, 
      * nota que deberá sacar para ganar si el puntaje mínimo es 3. Si algo
      * está mal con los porcentajes o con las notas, retorne -1.
      */
+public static float Calcular_para_ganar(float n1, float n2, float n3, float n4, float p1, float p2, float p3, float p4, float p5) {
+    try {
+        
+        if (p1 < 0 || p1 > 1 || p2 < 0 || p2 > 1 || p3 < 0 || p3 > 1 || 
+            p4 < 0 || p4 > 1 || p5 < 0 || p5 > 1) {
+            return -1;
+        }
 
+        float suma_p = p1 + p2 + p3 + p4 + p5;
+            if (suma_p == 1) {
+
+            } else {
+                return -1;
+            }
+
+        if (n1 < 0 || n1 > 5 || n2 < 0 || n2 > 5 || n3 < 0 || n3 > 5 || n4 < 0 || n4 > 5) {
+            return -1;
+        }
+
+        float puntaje_actual = (n1 * p1) + (n2 * p2) + (n3 * p3) + (n4 * p4);
+
+        float nota_necesaria = (3.0f - puntaje_actual) / p5;
+
+        if (nota_necesaria < 0 || nota_necesaria > 5) {
+            return -1;
+        }
+
+        return nota_necesaria;
+        
+    } catch (Exception e) {
+        return -1;
+    }
+}
 
     /*
      * 6. Diseñe un algoritmo e implemente la función Calcular_salario que
